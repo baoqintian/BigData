@@ -1,0 +1,4 @@
+20200613 1950
+1、没有配置centos 地下的 etc/hosts 中的hadoop000的地址
+2、centos的定时任务（crontab -e）没有生效
+2、1需要给指定的文件加权限 chomd +x

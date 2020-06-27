@@ -1,0 +1,36 @@
+实战总结
+1、数据来源：linux定时任务实时执行Python脚本
+2、开发步骤
+2、1 启动flume 收集python脚本产生的数据
+2、2 启动 Zookeeper
+2、3启动kafka生产者
+2、4启动kafka消费者在在console实时查看
+3、本地IDEA测试
+3、1 配置kafka的topic，zokeeper地址信息等参数
+3、2 数据清洗
+3、3保存到Hbase中
+3、3、1 启动Hadoop中的hdfs
+3、3、2 启动 Hbase 服务
+3、3、3 设置 Hbase的表结构 1)设计RowKey。2)设计cloum
+3、3、3 编写java工具类HbaseUtil
+3、3、4Hbase 脚本命令
+3、3、4、1 list查参所以在Hbase中的表
+3、3、4、2 scan 'xxxx' 参看指定表中的内容
+
+遇到问题
+1、 程序打包打包（mvn clean package -DskipTests）
+1、1Idea解决编码GBK/UTF-8的不可映射字符问题
+1、1、1解决方案
+File->Settings->File Encodings，将每个编码都设置为UTF-8
+同时将.idea文件夹下的encodings.xml中的charset设置删除即可
+1、1、2
+pom.xml底下增加
+  <properties>
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+ </properties>
+1、2maven打包 -source 1.5 中不支持 lambda 表达式
+1、2、1解决办法：pom.xml中配置一下jdk版本
+<properties>  
+    <maven.compiler.source>1.8</maven.compiler.source>  
+    <maven.compiler.target>1.8</maven.compiler.target>  
+</properties>  
